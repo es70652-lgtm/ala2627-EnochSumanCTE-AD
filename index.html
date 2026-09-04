@@ -4,55 +4,118 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- CHANGE THIS. It is the name on the browser tab, and it is what Google shows. -->
-  <title>Your Name — what you build Test</title>
-
-  <!-- CHANGE THIS TOO. One sentence. It is what shows under your link when someone shares it. -->
-  <meta name="description" content="One sentence about who you are and what you make.">
+  <meta name="theme-color" content="#0a2233">
+  <title>Enoch Suman | Student, builder, and problem-solver</title>
+  <meta name="description"
+    content="The personal portfolio of Enoch Suman, a high school student exploring technology, helpful tools, and creative problem-solving.">
 
   <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
+  <div class="page-glow page-glow-one" aria-hidden="true"></div>
+  <div class="page-glow page-glow-two" aria-hidden="true"></div>
 
-  <header>
-    <!-- Exactly ONE h1 on the page. It is your name. -->
-    <h1>Your Name - Enoch</h1>
-    <p class="tagline">One line: i help people and it's for everyone.</p>
+  <header class="site-header shell">
+    <a class="wordmark" href="index.html" aria-label="Enoch Suman home">
+      <span class="wordmark-mark">ES</span>
+      <span>Enoch Suman</span>
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#contact">Contact</a>
+      <a class="nav-button" href="assignments/">Assignments <span aria-hidden="true">↗</span></a>
+    </nav>
   </header>
 
-  <main>
-
-    <section>
-      <h2>What I am working on</h2>
-      <ul>
-        <li><strong>machine.</strong> a tech that helps with everyday work.</li>
-        <li><strong>Something else.</strong> Keep it concrete — a thing you made, not a skill you have.</li>
-      </ul>
+  <main class="shell">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot"></span> High school student · Building in public</p>
+        <h1 id="hero-title">Curious mind.<br><em>Helpful</em> ideas.</h1>
+        <p class="hero-intro">I’m Enoch, a student learning how technology can make everyday work feel a little more
+          human, useful, and possible.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#work">See what I’m making <span aria-hidden="true">↓</span></a>
+          <a class="text-link" href="#contact">Let’s connect <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      <div class="hero-card glass-panel" aria-label="Current focus">
+        <div class="card-topline"><span>Current focus</span><span class="card-number">01 / 03</span></div>
+        <div class="signal-graphic" aria-hidden="true">
+          <span class="signal-ring ring-one"></span>
+          <span class="signal-ring ring-two"></span>
+          <span class="signal-core"></span>
+          <span class="signal-line line-one"></span>
+          <span class="signal-line line-two"></span>
+        </div>
+        <p class="card-kicker">Exploring</p>
+        <h2>Technology that helps people.</h2>
+        <p>I’m learning by making small things, testing bold ideas, and paying attention to what makes a tool genuinely
+          useful.</p>
+        <div class="card-footer"><span>Learning out loud</span><span class="arrow-mark">↗</span></div>
+      </div>
     </section>
 
-    <section>
-      <h2>What I am learning</h2>
-      <p>
-        Two or three sentences. Name the actual tools. "I am learning networking and how data
-        centers stay online" beats "I am passionate about technology."
-      </p>
+    <section class="about-section" id="about" aria-labelledby="about-title">
+      <div class="section-heading">
+        <p class="eyebrow">01 / A little context</p>
+        <h2 id="about-title">Still learning.<br><em>Already building.</em></h2>
+      </div>
+      <div class="about-copy">
+        <p class="large-copy">I’m a high school student figuring out how to turn questions into projects. I care about
+          technology that feels welcoming, practical, and made with real people in mind.</p>
+        <p>Right now, I’m exploring programming, artificial intelligence, and the creative side of problem-solving.
+          Every assignment is a chance to practice, improve, and leave a better version behind.</p>
+        <div class="stat-row">
+          <div><strong>01</strong><span>curious by default</span></div>
+          <div><strong>∞</strong><span>things left to learn</span></div>
+        </div>
+      </div>
     </section>
 
-    <section>
-      <h2>Get in touch</h2>
-      <!--
-        Put an email you will still control after graduation. If you only have the school one
-        today, that is fine — put it in, and change it later. That is what commits are for.
-      -->
-      <p><a href="mailto:you@example.com">you@example.com</a></p>
+    <section class="work-section" id="work" aria-labelledby="work-title">
+      <div class="section-heading section-heading-wide">
+        <p class="eyebrow">02 / Selected work</p>
+        <h2 id="work-title">Ideas become<br><em>real here.</em></h2>
+        <a class="text-link" href="assignments/">Open assignment archive <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="project-grid">
+        <a class="project-card project-card-featured" href="game/">
+          <div class="project-image vault-image" aria-hidden="true"><span class="image-label">THE<br>VAULT</span><span
+              class="image-grid"></span></div>
+          <div class="project-meta"><span>Interactive project</span><span>01</span></div>
+          <h3>The Vault</h3>
+          <p>A text adventure about choices, clues, and building an experience one decision at a time.</p>
+          <span class="project-link">Explore project <span aria-hidden="true">↗</span></span>
+        </a>
+        <a class="project-card project-card-outline" href="assignments/">
+          <div class="project-image archive-image" aria-hidden="true"><span>+</span></div>
+          <div class="project-meta"><span>Coming next</span><span>02</span></div>
+          <h3>More to come</h3>
+          <p>This is where new experiments, class assignments, and ideas in progress will find a home.</p>
+          <span class="project-link">View the archive <span aria-hidden="true">↗</span></span>
+        </a>
+      </div>
     </section>
 
+    <section class="contact-section glass-panel" id="contact" aria-labelledby="contact-title">
+      <div>
+        <p class="eyebrow">03 / Say hello</p>
+        <h2 id="contact-title">Have a good<br><em>idea?</em></h2>
+      </div>
+      <div class="contact-copy">
+        <p>I’m always interested in meeting people who like to ask “what if?”</p>
+        <a class="email-link" href="mailto:you@example.com">you@example.com <span aria-hidden="true">↗</span></a>
+        <small>Replace this email with one you’ll keep after graduation.</small>
+      </div>
+    </section>
   </main>
 
-  <footer>
-    <p>Built by hand. Last updated <!-- change this when you change the page --> August 2026.</p>
+  <footer class="site-footer shell">
+    <p>Built by hand by Enoch Suman.</p>
+    <p>Last updated <time datetime="2026-08">August 2026</time> <span aria-hidden="true">·</span> Keep learning.</p>
   </footer>
 
 </body>
