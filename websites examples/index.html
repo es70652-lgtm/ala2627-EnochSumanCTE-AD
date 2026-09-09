@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Low-poly card motion lab</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <header class="site-header">
+    <p class="eyebrow">Flexbox / CSS motion study</p>
+    <h1>Low-poly card motion lab</h1>
+    <p class="intro">A small collection of modern, CSS-only card animations. Hover a card to inspect its motion.</p>
+  </header>
+
+  <main class="card-grid" aria-label="CSS card animation examples">
+    <article class="card card-lift">
+      <div class="poly poly-cyan" aria-hidden="true"></div>
+      <div class="card-content">
+        <span class="card-index">01 / lift</span>
+        <h2>Quiet lift</h2>
+        <p>A restrained translate and shadow change gives the card a physical surface.</p>
+        <span class="card-action">Explore <span aria-hidden="true">+</span></span>
+      </div>
+    </article>
+
+    <article class="card card-glow">
+      <div class="poly poly-pink" aria-hidden="true"></div>
+      <div class="card-content">
+        <span class="card-index">02 / glow</span>
+        <h2>Prism glow</h2>
+        <p>A low-poly highlight sweeps across the surface while the border responds.</p>
+        <span class="card-action">Explore <span aria-hidden="true">+</span></span>
+      </div>
+    </article>
+
+    <article class="card card-reveal">
+      <div class="poly poly-lime" aria-hidden="true"></div>
+      <div class="card-content">
+        <span class="card-index">03 / reveal</span>
+        <h2>Facet reveal</h2>
+        <p>Layered geometric shapes slide into place to reveal a second color plane.</p>
+        <span class="card-action">Explore <span aria-hidden="true">+</span></span>
+      </div>
+    </article>
+
+    <article class="card card-float">
+      <div class="poly poly-gold" aria-hidden="true"></div>
+      <div class="card-content">
+        <span class="card-index">04 / float</span>
+        <h2>Orbit float</h2>
+        <p>A gentle idle animation adds life, then pauses and deepens on interaction.</p>
+        <span class="card-action">Explore <span aria-hidden="true">+</span></span>
+      </div>
+    </article>
+
+    <article class="card card-tilt">
+      <div class="poly poly-blue" aria-hidden="true"></div>
+      <div class="card-content">
+        <span class="card-index">05 / tilt</span>
+        <h2>Edge tilt</h2>
+        <p>Perspective and a clipped edge create a responsive paper-like turn.</p>
+        <span class="card-action">Explore <span aria-hidden="true">+</span></span>
+      </div>
+    </article>
+
+    <article class="card card-pulse">
+      <div class="poly poly-orange" aria-hidden="true"></div>
+      <div class="card-content">
+        <span class="card-index">06 / pulse</span>
+        <h2>Signal pulse</h2>
+        <p>A soft ring expands behind the card, useful for status or attention states.</p>
+        <span class="card-action">Explore <span aria-hidden="true">+</span></span>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <span>display: flex</span>
+    <span>animation: CSS only</span>
+    <span>prefers-reduced-motion: supported</span>
+  </footer>
+</body>
+
+</html>
