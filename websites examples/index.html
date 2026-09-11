@@ -5,94 +5,140 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark">
-  <title>Low-poly card motion lab</title>
+  <title>Moonlit motion garden</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-  <header class="site-header">
-    <p class="eyebrow">Flexbox / CSS motion study</p>
-    <h1>Low-poly card motion lab</h1>
-    <p class="intro">A small collection of modern, CSS-only card animations. Hover a card to inspect its motion.</p>
-  </header>
+  <section class="sky-scene" id="sky" aria-label="Interactive night sky" role="button" tabindex="0">
+    <div class="stars stars-back" aria-hidden="true"></div>
+    <div class="stars stars-front" aria-hidden="true"></div>
+    <div class="moon" aria-hidden="true"><span></span></div>
+    <div class="shooting-stars" aria-hidden="true"></div>
 
-  <main class="card-grid" aria-label="CSS card animation examples">
-    <article class="card card-lift">
+    <header class="site-header">
+      <p class="eyebrow">Flexbox / CSS motion study</p>
+      <h1>Moonlit motion garden</h1>
+      <p class="intro">Seven low-poly card experiments drifting between the night sky and the meadow. Click anywhere
+        above to call a shooting star.</p>
+      <p class="sky-hint"><span class="hint-dot" aria-hidden="true"></span> sky signal ready</p>
+    </header>
+  </section>
+
+  <main class="card-grid" aria-label="Seven modern card animation examples">
+    <article class="card card-aurora">
       <div class="poly poly-cyan" aria-hidden="true"></div>
       <div class="card-content">
-        <span class="card-index">01 / lift</span>
-        <h2>Quiet lift</h2>
-        <p>A restrained translate and shadow change gives the card a physical surface.</p>
-        <span class="card-action">Explore <span aria-hidden="true">+</span></span>
+        <span class="card-index">01 / aurora</span>
+        <h2>Prism drift</h2>
+        <p>Layered facets lean into a slow aurora sweep, then fan open when your cursor arrives.</p>
+        <span class="card-action">Follow light <span aria-hidden="true">+</span></span>
       </div>
     </article>
 
-    <article class="card card-glow">
+    <article class="card card-flip">
       <div class="poly poly-pink" aria-hidden="true"></div>
       <div class="card-content">
-        <span class="card-index">02 / glow</span>
-        <h2>Prism glow</h2>
-        <p>A low-poly highlight sweeps across the surface while the border responds.</p>
-        <span class="card-action">Explore <span aria-hidden="true">+</span></span>
+        <span class="card-index">02 / flip</span>
+        <h2>Facet flip</h2>
+        <p>A pair of polygon planes trade places in a tiny 3D stage for a paper-cut illusion.</p>
+        <span class="card-action">Turn the page <span aria-hidden="true">+</span></span>
       </div>
     </article>
 
-    <article class="card card-reveal">
+    <article class="card card-ripple">
       <div class="poly poly-lime" aria-hidden="true"></div>
       <div class="card-content">
-        <span class="card-index">03 / reveal</span>
-        <h2>Facet reveal</h2>
-        <p>Layered geometric shapes slide into place to reveal a second color plane.</p>
-        <span class="card-action">Explore <span aria-hidden="true">+</span></span>
+        <span class="card-index">03 / ripple</span>
+        <h2>Moon ripple</h2>
+        <p>Concentric low-poly rings travel through the surface like a stone dropped in dark water.</p>
+        <span class="card-action">Make a wave <span aria-hidden="true">+</span></span>
       </div>
     </article>
 
-    <article class="card card-float">
+    <article class="card card-orbit">
       <div class="poly poly-gold" aria-hidden="true"></div>
       <div class="card-content">
-        <span class="card-index">04 / float</span>
-        <h2>Orbit float</h2>
-        <p>A gentle idle animation adds life, then pauses and deepens on interaction.</p>
-        <span class="card-action">Explore <span aria-hidden="true">+</span></span>
+        <span class="card-index">04 / orbit</span>
+        <h2>Orbit keeper</h2>
+        <p>A glowing shard circles its anchor point and accelerates into a bright hover orbit.</p>
+        <span class="card-action">Trace orbit <span aria-hidden="true">+</span></span>
       </div>
     </article>
 
-    <article class="card card-tilt">
+    <article class="card card-scan">
       <div class="poly poly-blue" aria-hidden="true"></div>
       <div class="card-content">
-        <span class="card-index">05 / tilt</span>
-        <h2>Edge tilt</h2>
-        <p>Perspective and a clipped edge create a responsive paper-like turn.</p>
-        <span class="card-action">Explore <span aria-hidden="true">+</span></span>
+        <span class="card-index">05 / scan</span>
+        <h2>Night scan</h2>
+        <p>A diagonal scanline searches the card automatically, then locks onto the pointer.</p>
+        <span class="card-action">Read the signal <span aria-hidden="true">+</span></span>
       </div>
     </article>
 
-    <article class="card card-pulse">
+    <article class="card card-bobble">
       <div class="poly poly-orange" aria-hidden="true"></div>
       <div class="card-content">
-        <span class="card-index">06 / pulse</span>
-        <h2>Signal pulse</h2>
-        <p>A soft ring expands behind the card, useful for status or attention states.</p>
-        <span class="card-action">Explore <span aria-hidden="true">+</span></span>
+        <span class="card-index">06 / bobble</span>
+        <h2>Comet bobble</h2>
+        <p>A springy comet nods through the scene, then snaps into a playful elastic recoil.</p>
+        <span class="card-action">Catch the tail <span aria-hidden="true">+</span></span>
       </div>
     </article>
 
-    <article class="card card-slice">
+    <article class="card card-magnet">
       <div class="poly poly-violet" aria-hidden="true"></div>
       <div class="card-content">
-        <span class="card-index">07 / slice</span>
-        <h2>Split prism</h2>
-        <p>A sharp geometric split rotates into a new composition when the surface is explored.</p>
-        <span class="card-action">Explore <span aria-hidden="true">+</span></span>
+        <span class="card-index">07 / magnet</span>
+        <h2>Magnetic split</h2>
+        <p>Two geometric halves pull apart on hover, revealing a charged center beneath.</p>
+        <span class="card-action">Open the core <span aria-hidden="true">+</span></span>
       </div>
     </article>
   </main>
 
+  <section class="meadow" aria-label="Moonlit meadow">
+    <div class="hill hill-far" aria-hidden="true"></div>
+    <div class="hill hill-near" aria-hidden="true"></div>
+    <div class="grass" aria-hidden="true"></div>
+    <div class="cat cat-left" aria-label="A cat watching the sky" role="img"><span
+        class="cat-ear cat-ear-left"></span><span class="cat-ear cat-ear-right"></span><span
+        class="cat-face"><i></i><i></i><b></b></span><span class="cat-tail"></span></div>
+    <div class="cat cat-right" aria-label="A cat sitting in the grass" role="img"><span
+        class="cat-ear cat-ear-left"></span><span class="cat-ear cat-ear-right"></span><span
+        class="cat-face"><i></i><i></i><b></b></span><span class="cat-tail"></span></div>
+    <p class="meadow-note">the meadow is listening</p>
+  </section>
+
   <footer>
     <span>display: flex</span>
-    <span>animation: CSS only</span>
+    <span>motion: CSS + tiny sky script</span>
     <span>prefers-reduced-motion: supported</span>
   </footer>
+
+  <script>
+    const sky = document.querySelector("#sky");
+    const shootingStars = document.querySelector(".shooting-stars");
+
+    function summonStar(event) {
+      const star = document.createElement("span");
+      const bounds = sky.getBoundingClientRect();
+      star.className = "shooting-star";
+      star.style.left = `${event.clientX - bounds.left}px`;
+      star.style.top = `${event.clientY - bounds.top}px`;
+      shootingStars.append(star);
+      star.addEventListener("animationend", () => star.remove());
+    }
+
+    sky.addEventListener("click", summonStar);
+    sky.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        const bounds = sky.getBoundingClientRect();
+        summonStar({ clientX: bounds.left + bounds.width * .7, clientY: bounds.top + bounds.height * .35 });
+      }
+    });
+  </script>
 </body>
 
 </html>
