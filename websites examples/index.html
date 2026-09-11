@@ -101,12 +101,15 @@
     <div class="hill hill-far" aria-hidden="true"></div>
     <div class="hill hill-near" aria-hidden="true"></div>
     <div class="grass" aria-hidden="true"></div>
-    <div class="cat cat-left" aria-label="A cat watching the sky" role="img"><span
-        class="cat-ear cat-ear-left"></span><span class="cat-ear cat-ear-right"></span><span
-        class="cat-face"><i></i><i></i><b></b></span><span class="cat-tail"></span></div>
-    <div class="cat cat-right" aria-label="A cat sitting in the grass" role="img"><span
-        class="cat-ear cat-ear-left"></span><span class="cat-ear cat-ear-right"></span><span
-        class="cat-face"><i></i><i></i><b></b></span><span class="cat-tail"></span></div>
+    <div class="grass-blades" aria-hidden="true"></div>
+    <div class="flowers" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="fireflies" aria-label="Interactive fireflies">
+      <button class="firefly firefly-one" type="button" aria-label="Firefly"></button>
+      <button class="firefly firefly-two" type="button" aria-label="Firefly"></button>
+      <button class="firefly firefly-three" type="button" aria-label="Firefly"></button>
+      <button class="firefly firefly-four" type="button" aria-label="Firefly"></button>
+      <button class="firefly firefly-five" type="button" aria-label="Firefly"></button>
+    </div>
     <p class="meadow-note">the meadow is listening</p>
   </section>
 
@@ -137,6 +140,33 @@
         const bounds = sky.getBoundingClientRect();
         summonStar({ clientX: bounds.left + bounds.width * .7, clientY: bounds.top + bounds.height * .35 });
       }
+    });
+
+    const meadow = document.querySelector(".meadow");
+    const fireflies = document.querySelectorAll(".firefly");
+
+    meadow.addEventListener("pointermove", (event) => {
+      const bounds = meadow.getBoundingClientRect();
+      const pointerX = event.clientX - bounds.left;
+      const pointerY = event.clientY - bounds.top;
+      meadow.style.setProperty("--grass-x", `${(pointerX / bounds.width - .5) * 2}rem`);
+
+      fireflies.forEach((firefly) => {
+        const flyBounds = firefly.getBoundingClientRect();
+        const distanceX = event.clientX - (flyBounds.left + flyBounds.width / 2);
+        const distanceY = event.clientY - (flyBounds.top + flyBounds.height / 2);
+        const distance = Math.hypot(distanceX, distanceY);
+        const pull = Math.max(0, 1 - distance / 180);
+        firefly.style.setProperty("--pull-x", `${-distanceX * pull * .18}px`);
+        firefly.style.setProperty("--pull-y", `${-distanceY * pull * .18}px`);
+      });
+    });
+
+    fireflies.forEach((firefly) => {
+      firefly.addEventListener("click", () => {
+        firefly.classList.remove("is-caught");
+        requestAnimationFrame(() => firefly.classList.add("is-caught"));
+      });
     });
   </script>
 </body>
