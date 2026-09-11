@@ -9,6 +9,7 @@
   --gold: #ffcb66;
   --blue: #8ea8ff;
   --orange: #ff936b;
+  --violet: #c39bff;
   --ease: cubic-bezier(.2, .8, .2, 1);
 }
 
@@ -96,7 +97,37 @@ h1 {
   overflow: hidden;
   border: 1px solid var(--line);
   background: #191b24;
+  transform-origin: 50% 100%;
+  animation: card-drift 6s ease-in-out infinite;
   transition: transform .55s var(--ease), border-color .4s ease, box-shadow .55s var(--ease);
+}
+
+.card:hover {
+  animation-play-state: paused;
+}
+
+.card:nth-child(2) {
+  animation-delay: -1.2s;
+}
+
+.card:nth-child(3) {
+  animation-delay: -2.4s;
+}
+
+.card:nth-child(4) {
+  animation-delay: -3.6s;
+}
+
+.card:nth-child(5) {
+  animation-delay: -4.8s;
+}
+
+.card:nth-child(6) {
+  animation-delay: -2s;
+}
+
+.card:nth-child(7) {
+  animation-delay: -3.1s;
 }
 
 .card::after {
@@ -163,6 +194,7 @@ h1 {
   background: var(--accent);
   clip-path: polygon(43% 0, 100% 22%, 82% 79%, 26% 100%, 0 40%);
   transition: transform .65s var(--ease), opacity .5s ease;
+  animation: poly-breathe 7s ease-in-out infinite;
 }
 
 .poly::after {
@@ -195,6 +227,10 @@ h1 {
 
 .card-pulse {
   --accent: var(--orange);
+}
+
+.card-slice {
+  --accent: var(--violet);
 }
 
 .card-lift:hover {
@@ -284,6 +320,61 @@ h1 {
   transform: translateX(.35rem);
 }
 
+.card-slice::before {
+  content: "";
+  position: absolute;
+  inset: -20% 30% 20% -10%;
+  z-index: 0;
+  background: var(--accent);
+  clip-path: polygon(0 15%, 75% 0, 100% 78%, 26% 100%);
+  opacity: .12;
+  transform: rotate(-12deg) translateX(-35%);
+  transition: transform .8s var(--ease), opacity .6s ease;
+}
+
+.card-slice:hover {
+  transform: perspective(900px) rotateY(8deg) rotateX(2deg) translateY(-.55rem);
+  border-color: var(--accent);
+  box-shadow: -.8rem 1.4rem 0 rgba(195, 155, 255, .1), 0 1.5rem 2.5rem rgba(0, 0, 0, .3);
+}
+
+.card-slice:hover::before {
+  opacity: .36;
+  transform: rotate(8deg) translateX(28%);
+}
+
+.card-slice:hover .poly {
+  transform: translate(-1.3rem, 1.1rem) rotate(28deg) scale(1.08);
+}
+
+.card:hover .card-action span {
+  transform: translateX(.35rem) rotate(45deg);
+}
+
+@keyframes card-drift {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-.28rem) rotate(.25deg);
+  }
+}
+
+@keyframes poly-breathe {
+
+  0%,
+  100% {
+    filter: saturate(1);
+  }
+
+  50% {
+    filter: saturate(1.35) brightness(1.08);
+  }
+}
+
 @keyframes float {
 
   0%,
@@ -305,6 +396,21 @@ h1 {
   100% {
     opacity: 0;
     transform: scale(1.75);
+  }
+}
+
+@media (max-width: 42rem) {
+  body {
+    padding-top: 3rem;
+  }
+
+  .site-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .card {
+    min-height: 17rem;
+    flex-basis: 100%;
   }
 }
 
