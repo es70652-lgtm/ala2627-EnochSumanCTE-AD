@@ -31,6 +31,7 @@ let gameActive = false;
 let lastFrameTime = 0;
 let hunterAccumulator = 0;
 let animationFrame;
+let messageTimeout;
 
 function dimensionsForLevel(currentLevel) {
   return { rows: Math.min(9 + Math.floor((currentLevel - 1) / 2) * 2, 17), columns: Math.min(13 + Math.floor((currentLevel - 1) / 2) * 2, 25) };
@@ -65,6 +66,7 @@ function cellIsOpen(from, directionName) {
 }
 
 function setupLevel() {
+  window.clearTimeout(messageTimeout);
   const dimensions = dimensionsForLevel(level);
   maze = createMaze(dimensions.rows, dimensions.columns);
   player = { x: 0, y: 0 };
@@ -102,8 +104,8 @@ function draw() {
   context.clearRect(0, 0, width, height);
   context.fillStyle = '#0a2025';
   context.fillRect(0, 0, width, height);
-  context.strokeStyle = 'rgba(142, 228, 188, .44)';
-  context.lineWidth = 1.2;
+  context.strokeStyle = 'rgba(142, 228, 188, .82)';
+  context.lineWidth = 2;
   context.beginPath();
   maze.flat().forEach((cell) => {
     const left = cell.x * cellWidth;
@@ -168,10 +170,31 @@ function moveHunters() {
       if (!cellIsOpen(maze[hunter.y][hunter.x], directionName)) continue;
       const direction = DIRECTIONS[directionName];
       const next = maze[hunter.y + direction.y]?.[hunter.x + direction.x];
-      if (next) options.push({ x: hunter.x + direction.x, y: hunter.y + direction.y });
+      if (next) options.push({ x: next.x, y: next.y });
     }
-    options.sort((first, second) => Math.abs(first.x - player.x) + Math.abs(first.y - player.y) - (Math.abs(second.x - player.x) + Math.abs(second.y - player.y)));
-    if (options.length) Object.assign(hunter, options[0]);
+    if (!options.length) return;
+
+    const queue = [{ x: hunter.x, y: hunter.y, firstStep: null }];
+    const visited = new Set([`${hunter.x},${hunter.y}`]);
+    let targetStep = null;
+    while (queue.length) {
+      const current = queue.shift();
+      if (current.x === player.x && current.y === player.y) {
+        targetStep = current.firstStep;
+        break;
+      }
+      for (const directionName of Object.keys(DIRECTIONS)) {
+        if (!cellIsOpen(maze[current.y][current.x], directionName)) continue;
+        const direction = DIRECTIONS[directionName];
+        const next = maze[current.y + direction.y]?.[current.x + direction.x];
+        if (!next) continue;
+        const key = `${next.x},${next.y}`;
+        if (visited.has(key)) continue;
+        visited.add(key);
+        queue.push({ x: next.x, y: next.y, firstStep: current.firstStep || { x: next.x, y: next.y } });
+      }
+    }
+    if (targetStep) Object.assign(hunter, targetStep);
   });
 }
 
@@ -180,7 +203,7 @@ function finishLevel() {
   escapes += 1;
   escapesStat.textContent = String(escapes).padStart(2, '0');
   showMessage(`Level ${level} clear`, level >= 4 ? 'Next level: the maze shifts again.' : 'The beacon accepts your signal.');
-  window.setTimeout(() => { level += 1; setupLevel(); }, 1050);
+  window.setTimeout(() => { level += 1; setupLevel(); }, 800);
 }
 
 function endGame(reason) {
@@ -190,12 +213,18 @@ function endGame(reason) {
   const detail = reason === 'timeout' ? `You reached level ${level}.` : 'The hunter found your trail.';
   showMessage(heading, `${detail} Restart and try a different route.`);
   statusText.textContent = reason === 'timeout' ? 'Signal lost' : 'Hunter contact';
+  messageTimeout = window.setTimeout(() => { boardMessage.hidden = true; }, 1800);
   draw();
 }
 
 function showMessage(heading, detail) {
+  window.clearTimeout(messageTimeout);
   boardMessage.innerHTML = `<strong>${heading}</strong><span>${detail}</span>`;
   boardMessage.hidden = false;
+}
+
+function hunterInterval() {
+  return Math.max(280, 900 - (level - 1) * 75);
 }
 
 function updateTimer(delta) {
@@ -216,7 +245,7 @@ function frame(timestamp) {
   lastFrameTime = timestamp;
   updateTimer(delta);
   hunterAccumulator += delta;
-  if (gameActive && hunters.length && hunterAccumulator > 900) {
+  if (gameActive && hunters.length && hunterAccumulator > hunterInterval()) {
     hunterAccumulator = 0;
     moveHunters();
     if (hunters.some((hunter) => hunter.x === player.x && hunter.y === player.y)) endGame('caught');
