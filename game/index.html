@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#08151f">
+  <title>Maze Runner | Enoch Suman</title>
+  <meta name="description" content="A timed maze escape game. Reach the beacon before the clock reaches zero.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <main class="game-shell">
+    <header class="topbar">
+      <a class="back-link" href="../index.html" aria-label="Back to Enoch Suman home">&larr; <span>Enoch Suman</span></a>
+      <p class="game-label"><span class="pulse-dot"></span> LIVE RUN</p>
+    </header>
+
+    <section class="intro" aria-labelledby="game-title">
+      <div>
+        <p class="eyebrow">The labyrinth protocol</p>
+        <h1 id="game-title">Find the <em>beacon.</em></h1>
+        <p class="intro-copy">Every escape makes the maze denser. On level 5, something starts hunting.</p>
+      </div>
+      <div class="level-mark" aria-hidden="true"><span>RUN</span><strong id="level-mark-number">01</strong></div>
+    </section>
+
+    <section class="game-layout" aria-label="Maze game">
+      <div class="board-frame">
+        <div class="board-topline"><span id="status-text">Reach the gold beacon</span><span id="level-text">LEVEL 01</span></div>
+        <div class="canvas-wrap">
+          <canvas id="maze-canvas" aria-label="Maze board. Use arrow keys or WASD to move."></canvas>
+          <div class="board-message" id="board-message" hidden></div>
+        </div>
+        <div class="board-footer"><span><kbd>WASD</kbd> or <kbd>ARROWS</kbd> move</span><span id="maze-size">9 x 13 grid</span></div>
+      </div>
+
+      <aside class="sidebar">
+        <div class="timer-panel">
+          <div class="panel-heading"><span>TIME REMAINING</span><span class="timer-icon">&#9683;</span></div>
+          <strong id="timer">45.0</strong><span class="seconds">SEC</span>
+          <div class="timer-track"><span id="timer-bar"></span></div>
+        </div>
+        <div class="stats-panel">
+          <div class="stat-row"><span>Level</span><strong id="level-stat">01</strong></div>
+          <div class="stat-row"><span>Escapes</span><strong id="escapes-stat">00</strong></div>
+          <div class="stat-row"><span>Hunters</span><strong id="hunters-stat">00</strong></div>
+        </div>
+        <div class="tip-panel"><span class="tip-mark">!</span><p id="tip-text">The beacon is always in the opposite corner. Keep moving.</p></div>
+        <button class="restart-button" id="restart-button" type="button"><span aria-hidden="true">&#8635;</span> Restart run</button>
+      </aside>
+    </section>
+
+    <nav class="touch-controls" aria-label="Touch movement controls">
+      <button type="button" data-direction="up" aria-label="Move up">&#8593;</button>
+      <button type="button" data-direction="left" aria-label="Move left">&#8592;</button>
+      <button type="button" data-direction="down" aria-label="Move down">&#8595;</button>
+      <button type="button" data-direction="right" aria-label="Move right">&#8594;</button>
+    </nav>
+
+    <footer class="game-footer"><span>ESCAPE SEQUENCE / 2026</span><span>One life. Keep your bearings.</span></footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+
+</html>
